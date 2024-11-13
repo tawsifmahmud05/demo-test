@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WebView JavaScript Event Demo</title>
+  </head>
+  <body>
+    <h1>Flutter WebView JavaScript Event Demo</h1>
+    <p>Click the button below to trigger an event in the Flutter app.</p>
+    <button id="triggerButton">Trigger Event</button>
+
+    <script>
+      // JavaScript function to send a message to Flutter
+      function triggerEvent() {
+        // This will send a message to Flutter through the FlutterChannel
+        FlutterChannel.postMessage("event1");
+      }
+
+      // Attach the trigger function to the button's onclick event
+      document.getElementById("triggerButton").onclick = function () {
+        triggerEvent();
+      };
+    </script>
+  </body>
+</html>
