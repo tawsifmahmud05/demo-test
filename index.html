@@ -22,8 +22,7 @@
         const imageContainer = document.getElementById("imageContainer");
         imageContainer.innerHTML = ""; // Clear any previous images
 
-        const base64Images = JSON.parse(images);
-        base64Images.forEach((base64Image) => {
+        images.forEach((base64Image) => {
           const img = document.createElement("img");
           img.src = base64Image;
           img.width = 100; // Set width for display purposes
