@@ -3,24 +3,34 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>WebView JavaScript Event Demo</title>
+    <title>Flutter WebView Image Selector</title>
   </head>
   <body>
-    <h1>Flutter WebView JavaScript Event Demo</h1>
-    <p>Click the button below to trigger an event in the Flutter app.</p>
-    <button id="triggerButton">Trigger Event</button>
+    <h1>Flutter WebView Image Selector Demo</h1>
+    <p>Click the button below to select images from the Flutter app.</p>
+    <button onclick="selectImages()">Select Images</button>
+    <div id="imageContainer"></div>
 
     <script>
-      // JavaScript function to send a message to Flutter
-      function triggerEvent() {
-        // This will send a message to Flutter through the FlutterChannel
-        FlutterChannel.postMessage("event1");
+      // Function to send a message to Flutter to select images
+      function selectImages() {
+        FlutterChannel.postMessage("selectImages");
       }
 
-      // Attach the trigger function to the button's onclick event
-      document.getElementById("triggerButton").onclick = function () {
-        triggerEvent();
-      };
+      // Function to receive and display images in the webpage
+      function displayImages(images) {
+        const imageContainer = document.getElementById("imageContainer");
+        imageContainer.innerHTML = ""; // Clear any previous images
+
+        const base64Images = JSON.parse(images);
+        base64Images.forEach((base64Image) => {
+          const img = document.createElement("img");
+          img.src = base64Image;
+          img.width = 100; // Set width for display purposes
+          img.style.margin = "5px";
+          imageContainer.appendChild(img);
+        });
+      }
     </script>
   </body>
 </html>
