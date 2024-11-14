@@ -6,29 +6,13 @@
     <title>Flutter WebView Image Selector</title>
   </head>
   <body>
-    <h1>Flutter WebView Image Selector Demo</h1>
-    <p>Click the button below to select images from the Flutter app.</p>
-    <button onclick="selectImages()">Select Images</button>
-    <div id="imageContainer"></div>
+    <h1>Flutter WebView Interaction</h1>
+    <button onclick="triggerEvent()">Tap to Snackbar</button>
 
     <script>
       // Function to send a message to Flutter to select images
-      function selectImages() {
-        FlutterChannel.postMessage("selectImages");
-      }
-
-      // Function to receive and display images in the webpage
-      function displayImages(images) {
-        const imageContainer = document.getElementById("imageContainer");
-        imageContainer.innerHTML = ""; // Clear any previous images
-
-        images.forEach((base64Image) => {
-          const img = document.createElement("img");
-          img.src = base64Image;
-          img.width = 100; // Set width for display purposes
-          img.style.margin = "5px";
-          imageContainer.appendChild(img);
-        });
+      function triggerEvent() {
+        FlutterChannel.postMessage("event1");
       }
     </script>
   </body>
